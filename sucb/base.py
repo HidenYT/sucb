@@ -45,10 +45,9 @@ class BaseCircuitBreaker(
     ICircuitBreakerDecorator,
     Generic[SettingsType],
 ):
-    def __init__(self, settings: SettingsType, url: str, state: State = State.CLOSED):
+    def __init__(self, settings: SettingsType, state: State = State.CLOSED):
         self._settings = settings
         self._state = state
-        self._url = url
 
     def _set_state(self) -> None:
         match self._state:

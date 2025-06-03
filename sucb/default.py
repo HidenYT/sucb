@@ -16,10 +16,8 @@ DefaultSettingsType = TypeVar("DefaultSettingsType", bound=DefaultCBSettings)
 
 
 class DefaultCircuitBreaker(BaseCircuitBreaker[DefaultSettingsType]):
-    def __init__(
-        self, settings: DefaultSettingsType, url: str, state: State = State.CLOSED
-    ):
-        super().__init__(settings, url, state)
+    def __init__(self, settings: DefaultSettingsType, state: State = State.CLOSED):
+        super().__init__(settings, state)
         self._open_time: float | None = None
         self._half_open_requests_count = 0
         self._half_open_failed_cnt = 0

@@ -14,10 +14,8 @@ class TimeBasedCBSettings(DefaultCBSettings):
 
 
 class TimeBasedCB(DefaultCircuitBreaker[TimeBasedCBSettings]):
-    def __init__(
-        self, settings: TimeBasedCBSettings, url: str, state: State = State.CLOSED
-    ):
-        super().__init__(settings, url, state)
+    def __init__(self, settings: TimeBasedCBSettings, state: State = State.CLOSED):
+        super().__init__(settings, state)
         self._q = deque[float]()
         self._closed_error_cnt_threshold = self._settings.closed_error_cnt_threshold
         self._closed_window_timeout = self._settings.time_window_width.total_seconds()
@@ -44,9 +42,9 @@ class PercentageBasedCBSettings(DefaultCBSettings):
 
 class PercentageBasedCB(DefaultCircuitBreaker[PercentageBasedCBSettings]):
     def __init__(
-        self, settings: PercentageBasedCBSettings, url: str, state: State = State.CLOSED
+        self, settings: PercentageBasedCBSettings, state: State = State.CLOSED
     ):
-        super().__init__(settings, url, state)
+        super().__init__(settings, state)
         self._q = deque[bool]()
         self._closed_error_rate_threshold = self._settings.closed_error_rate_threshold
         self._requests_window_width = self._settings.requests_window_width
