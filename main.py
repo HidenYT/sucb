@@ -4,12 +4,8 @@ from datetime import timedelta
 import requests
 
 from sucb.base import ICircuitBreaker
-from sucb.cb import (
-    PercentageBasedCB,
-    PercentageBasedCBSettings,
-    TimeBasedCB,
-    TimeBasedCBSettings,
-)
+from sucb.cb import (PercentageBasedCB, PercentageBasedCBSettings, TimeBasedCB,
+                     TimeBasedCBSettings)
 
 cb: ICircuitBreaker = TimeBasedCB(
     TimeBasedCBSettings(
