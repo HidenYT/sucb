@@ -1,0 +1,24 @@
+[project]
+name = "sucb"
+version = "0.1.0"
+description = "Simple user-friendly circuit breaker"
+authors = [
+    {name = "Dmitriy Bukharev",email = "buharev2009@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.16.0"
+flake8 = "^7.2.0"
+isort = "^6.0.1"
+requests = "^2.32.3"
+types-requests = "^2.32.0.20250602"
+black = "^25.1.0"
+
