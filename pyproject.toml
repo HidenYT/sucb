@@ -24,8 +24,17 @@ black = "^25.1.0"
 flake8-pyproject = "^1.2.3"
 pre-commit = "^4.2.0"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.0"
+pytest-mock = "^3.14.1"
+requests = "^2.32.3"
+
 [tool.flake8]
 max-line-length = 120
+exclude = "tests"
 
 [tool.isort]
 profile = "black"
+
+[tool.mypy]
+exclude = "tests"
