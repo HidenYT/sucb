@@ -84,10 +84,6 @@ class BaseCircuitBreaker(
         else:
             self._on_success()
 
-    @abstractmethod
-    def _go_closed_to_open(self) -> bool:
-        pass
-
     def with_cb(self, func: CallableType) -> CallableType:
         @wraps(func)
         def inner(*args, **kwargs):
@@ -95,6 +91,10 @@ class BaseCircuitBreaker(
                 return func(*args, **kwargs)
 
         return cast(CallableType, inner)
+
+    @abstractmethod
+    def _go_closed_to_open(self) -> bool:
+        pass
 
     @abstractmethod
     def _go_open_to_half_open(self) -> bool:
