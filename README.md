@@ -4,6 +4,7 @@ Example usage:
 ```python
 import requests
 from sucb.cb import PercentageBasedCB, PercentageBasedCBSettings
+from sucb.decor import with_cb
 
 cb = PercentageBasedCB(
     PercentageBasedCBSettings(
