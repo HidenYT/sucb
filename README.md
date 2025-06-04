@@ -34,4 +34,22 @@ with cb.make_request():
 @cb.with_cb
 def get():
     requests.get("http://some-url-ww.example")
+
+
+# Or as a decorator without creation of a CB object
+
+@with_cb(
+    exceptions=(
+        requests.ReadTimeout,
+        requests.ConnectionError,
+        requests.RequestException,
+    ),
+    open_timeout=0.01,
+    half_open_requests=2,
+    half_open_error_rate_threshold=0.5,
+    closed_error_rate_threshold=0.5,
+    requests_window_width=4,
+)
+def get():
+    requests.get("http://some-url-ww.example")
 ```
